@@ -1,38 +1,139 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 90vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.searchbar {
+  padding: 0.5rem 1rem;
+  width: 40%;
+  border: none;
+  border-radius: 50px;
+  font-family: inherit;
+}
+
+.searchbar:focus {
+  outline: 0;
+}
+
+img, .movie-img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  place-self: center;
+  justify-items: center;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .searchbar {
+    width: 80%;
+  }
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #282727 35%, #525151 100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.movie-detail {
+  background-color: #373636;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  place-items: center;
+  padding: 1rem;
+}
+
+.movie-data {
+  color: #ffffff;
+  text-align: start;
+  letter-spacing: 1px;
+  padding-left: 1rem;
+}
+
+.movie-header {
+  padding-left: 2rem;
+}
+
+.movie-descrption {
+  width: 90%;
+}
+
+.movie-btn {
+  width: 95%;
+  padding: 1rem;
+  border: none;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
 }
