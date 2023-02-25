@@ -9,16 +9,35 @@
   margin-bottom: 1rem;
 }
 
-.searchbar {
-  padding: 0.5rem 1rem;
-  width: 40%;
+.search-bar {
   border: none;
   border-radius: 50px;
   font-family: inherit;
+  background-color: #FFF;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem 1rem;
 }
 
-.searchbar:focus {
+.search-input {
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 0.5rem;
+}
+
+.search-input:focus {
   outline: 0;
+}
+
+.search-btn {
+  background-color: #FFF;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 img, .movie-img {
@@ -105,7 +124,7 @@ ul{
   left: 0;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   grid-template-columns: 1fr 3fr;
   place-items: center;
@@ -125,6 +144,23 @@ ul{
 
 .movie-descrption {
   width: 90%;
+}
+
+.body-mark {
+  align-content: center;
+  margin: 1rem;
+}
+
+.fav-button {
+  background-color: #fb2020;
+  color: #FFF;
+  padding: 5px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  padding: 1rem;
+  width: 95%;
+  font-size: 1rem;
 }
 
 .movie-btn {

@@ -1,79 +1,33 @@
-import React, {useState} from 'react';
-import MovieDetail from './MovieDetail';
-function Movies() {
-  
-  const [show, setShow] = useState(false);
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMovie } from "../features/movie/movieSlice";
+import { getMovieDetail, selectMovieDetail } from "../features/detail/detailSlice";
+import { addToViewCount } from "../features/viewCount/viewCountSlice";
 
-  function handleShow(operation) {
-    setShow(operation);
-    console.log("click" + operation + show)
-  }
+function Movies({handleHide}) {
+
+  const dispatch = useDispatch();
+
+  const movieList = useSelector(selectMovie);
+  const detail = useSelector(selectMovieDetail);
 
   return (
-    <>
-      {show ? (<MovieDetail handleShow={handleShow}/>) : (<></>) }
-      
+    <>  
       <ul className="cards">
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
-        <li className="cards_item" onClick={() => handleShow(true)}>
-          <div className="card">
-            <div className="card_image">
-              <img src="https://picsum.photos/300/400/?image=10" alt=''/>
-            </div>
-            <div className="card_content">
-              <h2 className="card_title">Card title</h2>
-            </div>
-          </div>
-        </li>
+        {movieList && movieList.map((movie) => {
+          return (
+            <li className="cards_item" onClick={() =>{ handleHide(false); dispatch(getMovieDetail(movie.id)); dispatch(addToViewCount(detail));}} key={movie.id}>
+              <div className="card">
+                <div className="card_image">
+                  <img src={"https://image.tmdb.org/t/p/w500"+movie.poster_path} alt=''/>
+                </div>
+                <div className="card_content">
+                  <h2 className="card_title">{movie.original_title}</h2>
+                </div>
+              </div>
+            </li>
+          )
+        })}
       </ul>
     </>
   )
